@@ -26,11 +26,11 @@ def tokenize(text):
     return clean_tokens
 
 # load data
-engine = create_engine('sqlite:///../data/YourDatabaseName.db')
-df = pd.read_sql_table('YourTableName', engine)
+engine = create_engine('sqlite:///../data/DisasterResponse.db')
+df = pd.read_sql_table('Messages', engine)
 
 # load model
-model = joblib.load("../models/your_model_name.pkl")
+model = joblib.load("../models/classifier.pkl")
 
 
 # index webpage displays cool visuals and receives user input text for model
@@ -43,10 +43,19 @@ def index():
     genre_counts = df.groupby('genre').count()['message']
     genre_names = list(genre_counts.index)
     
+    classification_counts = df.drop(columns=['message','id','original','genre']).sum()
+    classification_names = list(classification_counts.index)
+    
+    direct_counts = df[df['genre']=='direct'].drop(columns=['message','id','original','genre']).sum()
+    news_counts = df[df['genre']=='news'].drop(columns=['message','id','original','genre']).sum()
+    social_counts = df[df['genre']=='social'].drop(columns=['message','id','original','genre']).sum()
+    
+    classification_names = list(classification_counts.index)
+    
     # create visuals
     # TODO: Below is an example - modify to create your own visuals
     graphs = [
-        {
+        {#graph 1
             'data': [
                 Bar(
                     x=genre_names,
@@ -61,6 +70,59 @@ def index():
                 },
                 'xaxis': {
                     'title': "Genre"
+                }
+            }
+        },
+        {#graph 2
+            'data': [
+                Bar(
+                    x=classification_names,
+                    y=classification_counts
+                )
+            ],
+
+            'layout': {
+                'title': 'Distribution of Categories',
+                'yaxis': {
+                    'title': "Count"
+                },
+                'xaxis': {
+                    'tickfont' : {'size': 10},
+                    'title': "Category"
+                }
+            }
+        },
+        {#graph 3
+            'data': [
+                Bar(
+                    x=classification_names,
+                    y=direct_counts,
+                    opacity=0.75,
+                    name='Direct'
+                ),
+                Bar(
+                    x=classification_names,
+                    y=news_counts, 
+                    opacity=0.75,
+                    name='News'
+                ),
+                Bar(
+                    x=classification_names,
+                    y=social_counts,
+                    opacity=0.75,
+                    name='Social'
+                )
+            ],
+
+            'layout': {
+                'title': 'Distribution of Categories by Message Genre',
+                'barmode' : 'overlay',
+                'yaxis': {
+                    'title': "Count"
+                },
+                'xaxis': {
+                    'tickfont' : {'size': 10},
+                    'title': "Category"
                 }
             }
         }
