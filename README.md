@@ -23,12 +23,12 @@ This is part of a Udacity data science project intended to demonstrate ETL and M
         - `go.html` 
         - `master.html`
 
-### Instructions:
-1. Run the following commands in the project's root directory to set up your database and model.
+## Instructions
+1. Run the following commands in the project's root directory to set up your process the raw message and category data, producing a database of cleaned data, and a subsequent trained model.
 
-    - To run ETL pipeline that cleans data and stores in database
+    - To run *ETL pipeline* that cleans data and stores in database
         `python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db`
-    - To run ML pipeline that trains classifier and saves
+    - To run *ML pipeline* that trains classifier and saves
         `python models/train_classifier.py data/DisasterResponse.db models/classifier.pkl`
 
 2. Run the following command in the app's directory to run your web app.
@@ -38,8 +38,7 @@ This is part of a Udacity data science project intended to demonstrate ETL and M
 
 ## Contributing
 
-Feel free to create new branches or contribute. 
-Next steps would be to add resource links to the webpage model predictions for the user to access for further aid. 
+Feel free to create new branches or contribute. Next steps would be to add resource links to the webpage model predictions for the user to access for further aid. 
 
 ## Licensing
 
