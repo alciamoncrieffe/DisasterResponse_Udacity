@@ -1,5 +1,7 @@
 # Disaster Response Pipeline Project
 
+![enter image description here](https://raw.githubusercontent.com/alciamoncrieffe/DisasterResponse_Udacity/main/images/Screenshot%202022-01-12%20at%2001.11.38.png)
+
 ### Description / Motivation
 
 To build a model which analyzes disaster messages and uses machine learning to classify new messages as part of an API.
@@ -23,22 +25,26 @@ This is part of a Udacity data science project intended to demonstrate ETL and M
         - `go.html` 
         - `master.html`
 
-## Instructions
-1. Run the following commands in the project's root directory to set up your process the raw message and category data, producing a database of cleaned data, and a subsequent trained model.
+### Instructions:
+1. Run the following commands in the project's root directory to set up your database and model.
 
-    - To run *ETL pipeline* that cleans data and stores in database
+    - To run ETL pipeline that cleans data and stores in database
         `python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db`
-    - To run *ML pipeline* that trains classifier and saves
+    - To run ML pipeline that trains classifier and saves
         `python models/train_classifier.py data/DisasterResponse.db models/classifier.pkl`
 
 2. Run the following command in the app's directory to run your web app.
     `python run.py`
 
 3. Go to http://0.0.0.0:3001/ to view the web app, which should display the navbar, message classifier, and graphs derived from the training data.
-
+4. Type a message into the dialog box.
+![enter image description here](https://raw.githubusercontent.com/alciamoncrieffe/DisasterResponse_Udacity/main/images/Screenshot%202022-01-12%20at%2001.11.38.png)
+5. Click to 'Classify Message' and both the message and results will be shown below.
+![enter image description here](https://raw.githubusercontent.com/alciamoncrieffe/DisasterResponse_Udacity/main/images/Screenshot%202022-01-12%20at%2001.13.36.png)
 ## Contributing
 
-Feel free to create new branches or contribute. Next steps would be to add resource links to the webpage model predictions for the user to access for further aid. 
+Feel free to create new branches or contribute. 
+Next steps would be to add resource links to the webpage model predictions for the user to access for further aid. 
 
 ## Licensing
 
